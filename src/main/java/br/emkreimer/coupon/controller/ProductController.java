@@ -16,7 +16,7 @@ public class ProductController {
 
     @GetMapping(path = "/list")
     public List<Product> listing() {
-        return null;
+        return pService.listAll();
     }
 
     @PostMapping(path = "/save")
