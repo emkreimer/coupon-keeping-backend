@@ -5,6 +5,8 @@ import br.emkreimer.coupon.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/customer")
 public class CustomerController {
@@ -13,8 +15,8 @@ public class CustomerController {
     CustomerService cService;
 
     @GetMapping("/list")
-    public String listing() {
-        return "there will be something here...someday";
+    public List<Customer> listing() {
+        return cService.listAll();
     }
 
     @PostMapping("/save")
