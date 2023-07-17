@@ -16,4 +16,7 @@ public class Customer {
     @Column(name="name")
     private String name;
 
+    @Column(name="active")
+    private boolean active = true;
+
 }

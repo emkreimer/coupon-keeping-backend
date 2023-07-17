@@ -3,12 +3,10 @@ package br.emkreimer.coupon.controller;
 import br.emkreimer.coupon.domain.model.Customer;
 import br.emkreimer.coupon.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(path = "/customer")
 public class CustomerController {
 
     @Autowired
@@ -23,5 +21,10 @@ public class CustomerController {
     public String save(@RequestBody Customer customer) {
         cService.save(customer);
         return "as i said...someday";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        return "you really deleted me...";
     }
 }

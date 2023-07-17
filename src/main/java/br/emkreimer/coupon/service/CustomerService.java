@@ -15,4 +15,10 @@ public class CustomerService {
         // validator
         cRepository.save(customer);
     }
+
+    public void delete(Long id) {
+        Customer c = cRepository.findCustomerById(id);
+        c.setActive(false);
+        cRepository.save(c);
+    }
 }
