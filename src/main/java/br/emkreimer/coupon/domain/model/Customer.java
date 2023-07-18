@@ -29,4 +29,6 @@ public class Customer {
     @Column(name="active")
     private boolean active = true;
 
+    //private BigDecimal funds;
+
 }

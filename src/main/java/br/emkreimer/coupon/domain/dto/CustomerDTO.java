@@ -10,4 +10,5 @@ public class CustomerDTO {
     private Long id;
     private String name;
     private List<Long> idProducts;
+    private boolean active = true;
 }
