@@ -1,5 +1,6 @@
 package br.emkreimer.coupon.controller;
 
+import br.emkreimer.coupon.domain.dto.CustomerDTO;
 import br.emkreimer.coupon.domain.model.Customer;
 import br.emkreimer.coupon.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class CustomerController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestBody Customer customer) {
-        cService.save(customer);
+    public String save(@RequestBody CustomerDTO customerDTO) {
+        cService.save(customerDTO);
         return "as i said...someday";
     }
 

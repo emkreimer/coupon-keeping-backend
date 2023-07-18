@@ -10,5 +10,8 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("SELECT p FROM Product p WHERE p.supply != 0")
-    List<Product> findAllAvailable();
+    public List<Product> findAllAvailable();
+
+    @Query("SELECT p FROM Product p WHERE p.id = ?1 AND p.supply != 0")
+    public Product findOneWhileAvailable(Long id);
 }
