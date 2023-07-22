@@ -22,13 +22,11 @@ public class Customer {
 
     @JsonIgnore
     @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name="purchase", schema="public", joinColumns = @JoinColumn(name="costumer_id"),
+    @JoinTable(name="purchases", schema="public", joinColumns = @JoinColumn(name="customer_id"),
             inverseJoinColumns = @JoinColumn(name="product_id"))
     private List<Product> products = new ArrayList<>();
 
     @Column(name="active")
     private boolean active = true;
-
-    //private BigDecimal funds;
 
 }

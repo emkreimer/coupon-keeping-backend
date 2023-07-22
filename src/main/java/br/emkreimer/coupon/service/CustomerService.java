@@ -5,6 +5,7 @@ import br.emkreimer.coupon.domain.dto.CustomerDTO;
 import br.emkreimer.coupon.domain.model.Customer;
 import br.emkreimer.coupon.domain.model.Product;
 import br.emkreimer.coupon.repository.CustomerRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class CustomerService {
         return cRepository.findAllWhileActive();
     }
 
+    @Transactional
     public void save(CustomerDTO customerDTO) {
         // validator
 
