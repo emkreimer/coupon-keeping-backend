@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -33,8 +34,11 @@ public class PurchaseController {
     @RequestMapping(value = "/buy", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public String buy(@RequestBody PurchaseListWrapper purchases, @RequestParam("id") Long idCustomer) {
 
-        List<Purchase> p = pService.savePurchase(purchases.getPurchases(), idCustomer);
-
-        return "é...vai que, né";
+        try {
+            pService.savePurchase(purchases.getPurchases(), idCustomer);
+            return "oo-ho! thanks!";
+        } catch (Exception e) {
+            return "oh-oh...something went wrong :(";
+        }
     }
 }

@@ -22,5 +22,7 @@ public class Coupon {
     @Column(name="points")
     private int points;
 
+    @Column(name="complete")
+    private boolean complete = false;
 
 }
