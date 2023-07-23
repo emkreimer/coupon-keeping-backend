@@ -1,5 +1,6 @@
 package br.emkreimer.coupon.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,6 +27,7 @@ public class Product {
     @Column(name="supply")
     private int supply;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "product", targetEntity = Purchase.class, fetch = FetchType.LAZY)
     private List<Purchase> purchases = new ArrayList<>();
 }

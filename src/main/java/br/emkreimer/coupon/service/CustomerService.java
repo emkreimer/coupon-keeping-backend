@@ -28,10 +28,12 @@ public class CustomerService {
         return cRepository.findAllWhileActive();
     }
 
+    public Customer findById(Long id) {
+        return cRepository.findCustomerById(id);
+    }
     @Transactional
     public void save(CustomerDTO customerDTO) {
         // validator
-
         Customer customer = cMapper.toModel(customerDTO);
         cRepository.save(customer);
     }

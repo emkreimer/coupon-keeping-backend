@@ -23,4 +23,8 @@ public class Customer {
     @Column(name="active")
     private boolean active = true;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer", targetEntity = Purchase.class, fetch = FetchType.LAZY)
+    private List<Purchase> purchases;
+
 }
