@@ -17,6 +17,10 @@ public class ProductService {
         return pRepository.findAllAvailable();
     }
 
+    public Product findOne(Long id) {
+        return pRepository.findOneWhileAvailable(id);
+    }
+
     public void save(Product product) {
         // validator
         pRepository.save(product);
