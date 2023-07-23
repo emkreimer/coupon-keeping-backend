@@ -33,13 +33,6 @@ public class CustomerService {
         // validator
 
         Customer customer = cMapper.toModel(customerDTO);
-        List<Product> products = new ArrayList<>();
-
-        for (Long p : customerDTO.getIdProducts()) {
-            products.add(productService.findOne(p));
-        }
-
-        customer.setProducts(products);
         cRepository.save(customer);
     }
 
