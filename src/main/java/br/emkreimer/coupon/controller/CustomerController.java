@@ -4,6 +4,8 @@ import br.emkreimer.coupon.domain.dto.CustomerDTO;
 import br.emkreimer.coupon.domain.model.Customer;
 import br.emkreimer.coupon.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +18,18 @@ public class CustomerController {
     CustomerService cService;
 
     @GetMapping("/list")
-    public List<Customer> listing() {
-        return cService.listAll();
+    public ResponseEntity<?> listing() {
+        return new ResponseEntity<>(cService.listAll(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public String save(@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<String> save(@RequestBody CustomerDTO customerDTO) {
         cService.save(customerDTO);
-        return "as i said...someday";
+        return new ResponseEntity<>("Salvo!", HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        return "you really deleted me...";
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        return  new ResponseEntity<>("you really deleted me...", HttpStatus.OK);
     }
 }

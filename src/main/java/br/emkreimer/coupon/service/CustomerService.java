@@ -24,8 +24,10 @@ public class CustomerService {
     @Autowired
     private CustomerMapper cMapper;
 
-    public List<Customer> listAll() {
-        return cRepository.findAllWhileActive();
+
+    public List<CustomerDTO> listAll() {
+        List<Customer> customers = cRepository.findAllWhileActive();
+        return cMapper.toListDto(customers);
     }
 
     public Customer findById(Long id) {
