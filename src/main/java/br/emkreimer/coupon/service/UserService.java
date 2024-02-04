@@ -6,6 +6,8 @@ import br.emkreimer.coupon.domain.enums.UserRole;
 import br.emkreimer.coupon.domain.model.User;
 import br.emkreimer.coupon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,9 @@ public class UserService {
         }
 
         userRepository.save(user);
+    }
+
+    public User getByLogin(String login) throws UsernameNotFoundException {
+        return userRepository.findByLogin(login);
     }
 }
